@@ -174,6 +174,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001041609543_InitialCreate.cs" />
+    <Compile Include="Migrations\202001041609543_InitialCreate.Designer.cs">
+      <DependentUpon>202001041609543_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001041832152_SecondMigr.cs" />
+    <Compile Include="Migrations\202001041832152_SecondMigr.Designer.cs">
+      <DependentUpon>202001041832152_SecondMigr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001041834285_SecondMigr1.cs" />
+    <Compile Include="Migrations\202001041834285_SecondMigr1.Designer.cs">
+      <DependentUpon>202001041834285_SecondMigr1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001041836013_SecondMigr12.cs" />
+    <Compile Include="Migrations\202001041836013_SecondMigr12.Designer.cs">
+      <DependentUpon>202001041836013_SecondMigr12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001042059553_SecondMigr123.cs" />
+    <Compile Include="Migrations\202001042059553_SecondMigr123.Designer.cs">
+      <DependentUpon>202001042059553_SecondMigr123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001042222388_SecondMigr1231.cs" />
+    <Compile Include="Migrations\202001042222388_SecondMigr1231.Designer.cs">
+      <DependentUpon>202001042222388_SecondMigr1231.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001042338327_MigrationWithPOSTiD.cs" />
+    <Compile Include="Migrations\202001042338327_MigrationWithPOSTiD.Designer.cs">
+      <DependentUpon>202001042338327_MigrationWithPOSTiD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitialize.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -246,6 +275,7 @@
     <Content Include="Views\Home\Edit2Async.cshtml" />
     <Content Include="Views\Post\My.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
+    <Content Include="Views\Post\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,6 +292,29 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001041609543_InitialCreate.resx">
+      <DependentUpon>202001041609543_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001041832152_SecondMigr.resx">
+      <DependentUpon>202001041832152_SecondMigr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001041834285_SecondMigr1.resx">
+      <DependentUpon>202001041834285_SecondMigr1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001041836013_SecondMigr12.resx">
+      <DependentUpon>202001041836013_SecondMigr12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001042059553_SecondMigr123.resx">
+      <DependentUpon>202001042059553_SecondMigr123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001042222388_SecondMigr1231.resx">
+      <DependentUpon>202001042222388_SecondMigr1231.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001042338327_MigrationWithPOSTiD.resx">
+      <DependentUpon>202001042338327_MigrationWithPOSTiD.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

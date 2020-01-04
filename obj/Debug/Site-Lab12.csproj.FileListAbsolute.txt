@@ -114,3 +114,11 @@ D:\projects\Site-Lab12\obj\Debug\Site-Lab12.csprojAssemblyReference.cache
 D:\projects\Site-Lab12\obj\Debug\Site-Lab12.csproj.CopyComplete
 D:\projects\Site-Lab12\obj\Debug\Site-Lab12.dll
 D:\projects\Site-Lab12\obj\Debug\Site-Lab12.pdb
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.InitialCreate.resources
+D:\projects\Site-Lab12\obj\Debug\Site-Lab12.csproj.GenerateResource.cache
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.SecondMigr.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.SecondMigr1.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.SecondMigr12.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.SecondMigr123.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.SecondMigr1231.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.MigrationWithPOSTiD.resources
