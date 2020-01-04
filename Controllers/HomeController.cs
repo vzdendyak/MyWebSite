@@ -37,8 +37,15 @@ namespace Site_Lab12.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
+            string name = User.Identity.GetUserId();
+            //   var ser = dbContext.ApplicationsUsers.Where(m => m.Email == name);
+            var ser2 = userManager.Users.Where(m => m.Id == name).FirstOrDefault();
+            if (ser2 != null)
+            {
+                return View(ser2);
 
-            return View();
+            }
+            return View(ser2);
         }
 
         [Authorize]
@@ -52,8 +59,39 @@ namespace Site_Lab12.Controllers
             ser.PhoneNumber = user.PhoneNumber;
             userManager.UpdateAsync(ser);
             dbContext.SaveChanges();
-            
+
             return RedirectToAction("HomePage");
+        }
+        public async System.Threading.Tasks.Task<ActionResult> Edit2Async()
+        {
+            var ser = await userManager.FindByIdAsync(User.Identity.GetUserId());
+            if (ser != null)
+            {
+                return View(ser);
+            }
+            else
+            {
+
+
+                return RedirectToAction("HomePage");
+            }
+        }
+        [HttpPost]
+        public async System.Threading.Tasks.Task<ActionResult> Edit2Async(ApplicationUser user)
+        {
+            var ser = await userManager.FindByIdAsync(User.Identity.GetUserId());
+            if (ser!=null)
+            {
+                ser.Email = user.Email;
+                ser.UserName = user.UserName;
+                ser.PhoneNumber = user.PhoneNumber;
+                IdentityResult res = await userManager.UpdateAsync(ser);
+                if (res.Succeeded)
+                {
+                    return RedirectToAction("HomePage");
+                }
+            }
+            return RedirectToAction("Index");
         }
         public ActionResult About()
         {

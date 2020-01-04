@@ -4,24 +4,25 @@
     ViewBag.Title = "HomePage";
 }
 
-<h2>My home page</h2>
+<h2>Моя сторінка</h2>
 
 <div>
     <h4>@Model.UserName</h4>
     <hr />
     <dl class="dl-horizontal">
-        <p>My email: @Model.Email</p>
-        <p>My username: @Model.UserName</p>
+        <p>Моя пошта: @Model.Email</p>
+        <p>Мій нікнейм: @Model.UserName</p>
+        <p>Мій номер телефону: @Model.PhoneNumber</p>
         @foreach (var s in Model.Roles)
         {
             <p>
                 @if (s.RoleId == "fec52346-e68c-41a2-b878-2a5bf51ad1a9")
                 {
-                <p>You are admin.</p>
+                <p>Ви адмін.</p>
                 }
                 else
                 {
-                    <p>You are user.</p>
+                    <p>Ви користувач.</p>
                 }</p>
         }
       
@@ -30,6 +31,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Змінити", "Edit2Async", new { id = Model.Id }) |
+    @Html.ActionLink("На головну", "Index")
 </p>
