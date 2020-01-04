@@ -29,5 +29,6 @@ namespace Site_Lab12.Models
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

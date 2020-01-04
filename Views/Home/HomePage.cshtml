@@ -1,0 +1,35 @@
+﻿@model Site_Lab12.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "HomePage";
+}
+
+<h2>My home page</h2>
+
+<div>
+    <h4>@Model.UserName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <p>My email: @Model.Email</p>
+        <p>My username: @Model.UserName</p>
+        @foreach (var s in Model.Roles)
+        {
+            <p>
+                @if (s.RoleId == "fec52346-e68c-41a2-b878-2a5bf51ad1a9")
+                {
+                <p>You are admin.</p>
+                }
+                else
+                {
+                    <p>You are user.</p>
+                }</p>
+        }
+      
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
