@@ -1464,6 +1464,17 @@ dd {
   .dl-horizontal dd {
     margin-left: 180px;
   }
+    
+}
+.com-horizontal {
+    margin-left: 500px;
+    float: left;
+    width: 300px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 abbr[title],
 abbr[data-original-title] {
