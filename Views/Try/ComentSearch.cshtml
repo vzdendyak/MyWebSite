@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Site_Lab12.Models.Comment>
+
+<div id="searchresults">
+    <h3>Все коменти поста </h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Title</li>
+        }
+    </ul>
+</div>

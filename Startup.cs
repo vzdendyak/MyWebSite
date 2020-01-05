@@ -9,6 +9,8 @@ namespace Site_Lab12
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            app.MapSignalR();
         }
     }
 }

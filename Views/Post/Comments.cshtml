@@ -1,114 +1,25 @@
 ﻿@model IEnumerable<Site_Lab12.Models.Comment>
-<ul id="comments">
-    @foreach (var com in Model)
-    {
+    <div id="comentsPart">
+        <ul id="comments">
+            @foreach (var com in Model)
+            {
 
-        <li class="media">
-            <div class="media-left">
-            </div>
-            <div class="media-body">
-                <div class="media-heading">
-                    <div class="author">@com.Author</div>
-                    <div class="metadata">
-                        <span class="date">@com.Date</span>
-                    </div>
-                </div>
-                <div class="media-text text-justify">
-                    @com.BodyText
-                </div>
-                <div class="footer-comment">
-                    @if (User.IsInRole("admin"))
-                    {
-                        @Html.ActionLink("Видалити", "CommentDelete")
-                    }
-                </div>
-            </div>
-        </li>
-    }
-</ul>
-@using(Ajax.BeginForm("CommentAdd", new AjaxOptions { UpdateTargetId="comments"}))
-{
-<div id="addCommentContainer">
-    <p>Добавить комментарий</p>
-   
-        <div>
-            @*<p>Назва</p>*@
-            @Html.TextBox("Title","Введіть назву")
-            <br />
-            @Html.TextArea("BodyText","Введіть коментар",2,20,null)
-            @Html.Hidden("postId1",$"{ViewData["postsId"]}")
-            @*<textarea name="body" id="body" cols="20" rows="2">  
-        </textarea>*@
-            <br />
-            <input type="submit" id="submit" value="Відправити" />
-        </div>
-   
-</div>
-}
-
-@*@using(Html.BeginForm("CommentAdd","Post",FormMethod.Post)){
-<div id="addCommentContainer">
-    <p>Добавить комментарий</p>
-    <form id="addCommentForm" method="post" action="">
-        <div>
-            <label for="body">
-                Что вы хотели сказать?
-            </label>
-            <br />
-            <textarea name="body" id="body" cols="20" rows="2">  
-        </textarea>
-            <br />
-            <input type="submit" id="submit" value="Отправить" />
-        </div>
-    </form>
-</div
-}>*@
-@*<li class="media">
-        <div class="media-left">
-            <a href="#">
-                <img class="media-object img-rounded" src="/examples/images/avatar1.jpg" alt="">
-            </a>
-        </div>
-        <div class="media-body">
-            <div class="media-heading">
-                <div class="author">Дима</div>
-                <div class="metadata">
-                    <span class="date">3 минуты назад</span>
-                </div>
-            </div>
-            <div class="media-text text-justify">
-                Tempore, cum soluta nobis est et quas. Quas molestias excepturi
-                sint, obcaecati cupiditate non provident, similique sunt in. Obcaecati cupiditate non recusandae
-                impedit. Hic tenetur a sapiente delectus. Facere possimus, omnis dolor repellendus inventore
-                veritatis et voluptates. Ipsa, quae ab illo inventore veritatis et quasi architecto beatae. In
-                culpa, qui in culpa. Cum soluta nobis est laborum et aut perferendis doloribus. Vitae dicta
-                sunt, explicabo perspiciatis. Amet, consectetur, adipisci velit, sed quia voluptas sit,
-                aspernatur. Obcaecati cupiditate non provident, similique sunt in. Reiciendis voluptatibus
-                maiores alias consequatur aut officiis debitis aut perferendis doloribus asperiores. Assumenda
-                est, omnis dolor repellendus voluptas assumenda est omnis.
-            </div>
-            <div class="footer-comment">
-                <span class="vote plus" title="Нравится">
-                    <i class="fa fa-thumbs-up"></i>
-                </span>
-                <span class="rating">
-                    +0
-                </span>
-                <span class="vote minus" title="Не нравится">
-                    <i class="fa fa-thumbs-down"></i>
-                </span>
-                <span class="devide">
-                    |
-                </span>
-                <span class="comment-reply">
-                    <a href="#" class="reply">ответить</a>
-                </span>
-            </div>
-        </div>
-    </li>*@
-
-<!-- jQuery -->
-<script src="/examples/vendors/jquery/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap -->
-<script src="/examples/vendors/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+                <li class="media">
+                            <div class="author">@com.Author</div>
+                            <div class="metadata">
+                                <span class="date">@com.Date</span>
+                            </div>
+                        <div class="media-text text-justify">
+                            @com.BodyText
+                        </div>
+                        <div class="footer-comment">
+                            @if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("Видалити", "CommentDelete")
+                            }
+                        </div>
+                </li>
+            }
+        </ul>
+    </div>
 

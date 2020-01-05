@@ -72,6 +72,7 @@ namespace Site_Lab12.Controllers
             var post = postContext.Posts.Where(m => m.Id == id).FirstOrDefault();
             var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
             ViewData["com"] = coments;
+            ViewBag.i = 0;
             ViewBag.coments = coments;
             ViewData["postsId"] = post.Id;
             return View(post);
@@ -152,19 +153,35 @@ namespace Site_Lab12.Controllers
 
         public ActionResult CommentAdd(string Title,string BodyText, int postId1)
         {
-          
-            
+            ViewBag.i=1;
+
             var post = postContext.Posts.Where(m => m.Id == postId1).FirstOrDefault();
             var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
             string Id = User.Identity.GetUserId();
-            var posts = postContext.Posts.Where(m => m.AuthorId == Id).ToList();
-            var ser = userManager.Users.Where(m => m.Id == Id).FirstOrDefault();
-            Comment comentTemp = new Comment { BodyText = BodyText, Title = Title, Author = ser.UserName, 
-                                            AuthorId = ser.Id, Date = DateTime.Now , PostId=postId1, post=post};
-            postContext.Comments.Add(comentTemp);
-            postContext.SaveChanges();
-            ViewData["com"] = coments;
-            return PartialView("Comments",coments);
+            //  var posts = postContext.Posts.Where(m => m.AuthorId == Id).ToList();
+            try
+            {
+                var ser = userManager.Users.Where(m => m.Id == Id).FirstOrDefault();
+                Comment comentTemp = new Comment
+                {
+                    BodyText = BodyText,
+                    Title = Title,
+                    Author = ser.UserName,
+                    AuthorId = ser.Id,
+                    Date = DateTime.Now,
+                    PostId = postId1,
+                    post = post
+                };
+                postContext.Comments.Add(comentTemp); postContext.SaveChanges(); return PartialView("Comments", coments);
+
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return HttpNotFound();
+            //ViewData["com"] = coments;
         }
         public ActionResult CommentDelete()
         {
