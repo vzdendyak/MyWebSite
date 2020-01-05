@@ -17,6 +17,7 @@ namespace Site_Lab12.Controllers
         ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(dbContext));
         PostContext postContext = new PostContext();
         // GET: Post
+        [Authorize]
         public ActionResult My()
         {
             //Post p1 = new Post { BodyText = "Lorem ipsum", AuthorId = User.Identity.GetUserId(), Title = "MyPost", Date = DateTime.Now };
@@ -28,6 +29,17 @@ namespace Site_Lab12.Controllers
             
             return View(posts);
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult UserPosts(string id)
+        {
+            var posts = postContext.Posts.Where(m => m.AuthorId == id).ToList();
+            var ser = userManager.Users.Where(m => m.Id == posts[0].AuthorId).FirstOrDefault();
+            ViewData["UserName"] = ser.UserName;
+            return View(posts);
+        }
+
         public ActionResult My1()
         {
             //Post p1 = new Post { BodyText = "Lorem ipsum", AuthorId = User.Identity.GetUserId(), Title = "MyPost", Date = DateTime.Now };
@@ -52,14 +64,16 @@ namespace Site_Lab12.Controllers
             return RedirectToAction("My");
         }
 
-        
+
         // GET: Post/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             var post = postContext.Posts.Where(m => m.Id == id).FirstOrDefault();
             var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
             ViewData["com"] = coments;
             ViewBag.coments = coments;
+            ViewData["postsId"] = post.Id;
             return View(post);
         }   
 
@@ -86,13 +100,20 @@ namespace Site_Lab12.Controllers
         }
 
         // GET: Post/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
-            return View();
+            var post = postContext.Posts.Where(m => m.Id == id).FirstOrDefault();
+            var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
+            ViewData["com"] = coments;
+            ViewBag.coments = coments;
+            return View(post);
         }
 
         // POST: Post/Edit/5
         [HttpPost]
+        [Authorize]
+
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -127,6 +148,27 @@ namespace Site_Lab12.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult CommentAdd(string Title,string BodyText, int postId1)
+        {
+          
+            
+            var post = postContext.Posts.Where(m => m.Id == postId1).FirstOrDefault();
+            var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
+            string Id = User.Identity.GetUserId();
+            var posts = postContext.Posts.Where(m => m.AuthorId == Id).ToList();
+            var ser = userManager.Users.Where(m => m.Id == Id).FirstOrDefault();
+            Comment comentTemp = new Comment { BodyText = BodyText, Title = Title, Author = ser.UserName, 
+                                            AuthorId = ser.Id, Date = DateTime.Now , PostId=postId1, post=post};
+            postContext.Comments.Add(comentTemp);
+            postContext.SaveChanges();
+            ViewData["com"] = coments;
+            return PartialView("Comments",coments);
+        }
+        public ActionResult CommentDelete()
+        {
+            return RedirectToAction("My");
         }
     }
 }

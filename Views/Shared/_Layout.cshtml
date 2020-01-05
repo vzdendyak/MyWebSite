@@ -26,6 +26,8 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Дописи", "My", "Post")</li>
+                        <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home")</li>
+
                     }
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>

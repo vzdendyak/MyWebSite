@@ -1,0 +1,51 @@
+﻿@model Site_Lab12.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.UserName</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (User.IsInRole("admin"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "UsersList")
+</p>
+<h2>Дописи</h2>
+
+@Html.Partial("PartialUserPosts", ViewData["Posts"])

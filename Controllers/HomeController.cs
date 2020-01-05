@@ -14,6 +14,7 @@ namespace Site_Lab12.Controllers
     {
         public static ApplicationDbContext dbContext = new ApplicationDbContext();
         ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(dbContext));
+        PostContext postContext = new PostContext();
         public ActionResult Index()
         {
             return View();
@@ -31,6 +32,13 @@ namespace Site_Lab12.Controllers
 
             }
             return View(ser2);
+        }
+
+        [Authorize]
+        public ActionResult UsersList()
+        {
+            var users = userManager.Users.ToList();
+            return View(users);
         }
 
         [Authorize]
@@ -62,19 +70,25 @@ namespace Site_Lab12.Controllers
 
             return RedirectToAction("HomePage");
         }
-        public async System.Threading.Tasks.Task<ActionResult> Edit2Async()
+        public async System.Threading.Tasks.Task<ActionResult> Edit2Async(string Id)
         {
-            var ser = await userManager.FindByIdAsync(User.Identity.GetUserId());
-            if (ser != null)
+            if (Id!=null)
             {
-                return View(ser);
+                var ser = await userManager.FindByIdAsync(Id);
+                if (ser != null)
+                {
+                    return View(ser);
+                }
+                else
+                {
+
+                    return RedirectToAction("HomePage");
+                }
+
             }
-            else
-            {
+            return RedirectToAction("HomePage");
 
 
-                return RedirectToAction("HomePage");
-            }
         }
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Edit2Async(ApplicationUser user)
@@ -92,6 +106,28 @@ namespace Site_Lab12.Controllers
                 }
             }
             return RedirectToAction("Index");
+        }
+
+        public async System.Threading.Tasks.Task<ActionResult> Details(string Id)
+
+        {
+            if (Id!=null)
+            {
+                var posts = postContext.Posts.Where(m => m.AuthorId == Id).ToList();
+                ViewData["Posts"] = posts;
+                var ser = await userManager.FindByIdAsync(Id);
+                if (ser != null)
+                {
+                    return View(ser);
+                }
+                else
+                {
+
+                    return RedirectToAction("HomePage");
+                }
+
+            }
+            return RedirectToAction("HomePage");
         }
         public ActionResult About()
         {
