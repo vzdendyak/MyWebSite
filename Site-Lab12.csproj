@@ -211,7 +211,37 @@
     <Compile Include="Migrations\202001042338327_MigrationWithPOSTiD.Designer.cs">
       <DependentUpon>202001042338327_MigrationWithPOSTiD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001051912491_AddedCOnnectionId.cs" />
+    <Compile Include="Migrations\202001051912491_AddedCOnnectionId.Designer.cs">
+      <DependentUpon>202001051912491_AddedCOnnectionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001061118491_MesForChats.cs" />
+    <Compile Include="Migrations\202001061118491_MesForChats.Designer.cs">
+      <DependentUpon>202001061118491_MesForChats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\202001031637156_InitialCreate.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\202001031637156_InitialCreate.Designer.cs">
+      <DependentUpon>202001031637156_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\202001051946275_AddedCOnnectionId.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\202001051946275_AddedCOnnectionId.Designer.cs">
+      <DependentUpon>202001051946275_AddedCOnnectionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\202001061222061_ITryNow0.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\202001061222061_ITryNow0.Designer.cs">
+      <DependentUpon>202001061222061_ITryNow0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\202001061229228_ITryNow09.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\202001061229228_ITryNow09.Designer.cs">
+      <DependentUpon>202001061229228_ITryNow09.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MessagesContext\202001061217372_ITryNow.cs" />
+    <Compile Include="Migrations\MessagesContext\202001061217372_ITryNow.Designer.cs">
+      <DependentUpon>202001061217372_ITryNow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MessagesContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitialize.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -250,6 +280,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\util.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -336,6 +367,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001042338327_MigrationWithPOSTiD.resx">
       <DependentUpon>202001042338327_MigrationWithPOSTiD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001051912491_AddedCOnnectionId.resx">
+      <DependentUpon>202001051912491_AddedCOnnectionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001061118491_MesForChats.resx">
+      <DependentUpon>202001061118491_MesForChats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\202001031637156_InitialCreate.resx">
+      <DependentUpon>202001031637156_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\202001051946275_AddedCOnnectionId.resx">
+      <DependentUpon>202001051946275_AddedCOnnectionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\202001061222061_ITryNow0.resx">
+      <DependentUpon>202001061222061_ITryNow0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\202001061229228_ITryNow09.resx">
+      <DependentUpon>202001061229228_ITryNow09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MessagesContext\202001061217372_ITryNow.resx">
+      <DependentUpon>202001061217372_ITryNow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

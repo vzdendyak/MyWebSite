@@ -128,3 +128,10 @@ D:\projects\Site-Lab12\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\projects\Site-Lab12\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 D:\projects\Site-Lab12\bin\ru\Microsoft.AspNet.SignalR.Core.resources.dll
 D:\projects\Site-Lab12\bin\ru\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.AddedCOnnectionId.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.InitialCreate.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.AddedCOnnectionId.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.MesForChats.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.MessagesContext.ITryNow.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.ITryNow0.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.ITryNow09.resources

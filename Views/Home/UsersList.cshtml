@@ -1,37 +1,71 @@
 ﻿@model IEnumerable<Site_Lab12.Models.ApplicationUser>
-
 @{
     ViewBag.Title = "Користувачі Speach";
 }
-
-    <h2>Користувачі <i>Speach</i></h2>
-
-
-<table class="table">
-    <tr>
-    
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>  
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-
-            @if (User.IsInRole("admin"))
-            {
-                @Html.ActionLink("Edit", "Edit2Async", new { id=item.Id })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            }
-        </td>
-    </tr>
+@{ 
+    Layout = null;
 }
+<h2>Користувачі <i>Speach</i></h2>
 
-</table>
+<div class="main">
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    <input id="btnLogin" type="button" value="Send Message" />
+                    @*@Html.ActionLink("Send message", "SendMessage", "Try", new { id = item.Id }, null)*@
+
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit2Async", new { id = item.Id })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div id="loginBlock">
+        @*@Html.Hidden("txtUserName",User.Identity.Name)*@
+        <input id="txtUserName" type="text" value="@User.Identity.Name" hidden="hidden" />
+        @*<input id="btnLogin" type="button" value="Войти" />*@
+    </div>
+    <div id="chatBody">
+        <div id="header"></div>
+        <div id="inputForm">
+            <input type="text" id="message" />
+            <input type="button" id="sendmessage" value="Отправить" />
+        </div>
+        <div id="chatroom"></div>
+
+        <div id="chatusers">
+            <p><b>Все пользователи</b></p>
+        </div>
+    </div>
+    <input id="hdId" type="hidden" />
+    <input id="username" type="hidden" />
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<!--Ссылка на библиотеку SignalR -->
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/util.js"></script>
