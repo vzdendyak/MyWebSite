@@ -9,7 +9,7 @@ using Site_Lab12.Models;
 
 namespace Site_Lab12
 {
-    public class ChatHub : Hub
+    public class ChatHub2 : Hub
     {
         public static ApplicationDbContext dbContext = new ApplicationDbContext();
         public ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(dbContext));

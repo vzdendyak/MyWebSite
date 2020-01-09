@@ -36,20 +36,7 @@
 
         </dl>
     </div>
-    <script type="text/javascript">
-    function OnBegin() {
-        alert("Происходит отправка запроса");
-    }
-    function OnSuccess(data) {
-        alert("Запрос был успешно выполнен. Получены следующие данные: \n" + data);
-    }
-    function OnFailure(request, error) {
-        $("#com_updt")
-    }
-    function OnComplete(request, status) {
-        alert("Статус запроса : " + status);
-    }
-    </script>
+
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
         @Html.ActionLink("Back to List", "Index")

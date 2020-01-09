@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Site_Lab12.Models.UserMessage>
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Dialog";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Speach", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Моя сторінка", "HomePage", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Дописи", "My", "Post")</li>
+                        <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home")</li>
+
+                    }
+                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
+                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+        <h2>Dialog with </h2>
+
+
+
+        <div id="chatBody">
+            <div>
+                <ul id="chatroom">
+                    @foreach (var i in Model)
+                    {
+                    <li>
+                        @if (i.UserSenderId == ViewData["senderId"].ToString())
+                        {
+                            <p > <b class="SenderName">@i.senderUserName: </b> @i.MessageText <b>...............DATA</b></p>
+                        }
+                        else
+                        {
+                            <p ><b class="RecipientName">@i.senderUserName: </b>   @i.MessageText <b>...............DATA</b></p>
+
+                        }
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div id="chatroom1"></div>
+
+            <div id="header"></div>
+            <div id="inputForm">
+                <input type="text" id="message" />
+                <input type="button" id="sendmessage" value="Отправить" />
+            </div>
+
+            <input id="senderId" type="hidden" value="@ViewData["senderId"]" />
+            <input id="recipientId" type="hidden" value="@ViewData["recipientId"]" />
+
+            <input id="username" type="hidden" value="@User.Identity.Name" />
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
+    </footer>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!--Ссылка на библиотеку SignalR -->
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/DialogScripts.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MessageText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserSenderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserToSendId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChatId)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserSenderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserToSendId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChatId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@

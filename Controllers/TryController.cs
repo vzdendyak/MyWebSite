@@ -34,16 +34,20 @@ namespace Site_Lab12.Controllers
         }
         public void SendMessage(string id)
         {
-            string IdS = User.Identity.GetUserId();
-            var userSender = userManager.Users.Where(m => m.Id == IdS).FirstOrDefault();
-            var userToSend = userManager.Users.Where(m => m.Id == id).FirstOrDefault();
-            var context = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
-            chat.Connect(userToSend.UserName);
-            chat.Connect(userSender.UserName);
+            //string IdS = User.Identity.GetUserId();
+            //var userSender = userManager.Users.Where(m => m.Id == IdS).FirstOrDefault();
+            //var userToSend = userManager.Users.Where(m => m.Id == id).FirstOrDefault();
+            //var context = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
+            //chat.Connect(userToSend.UserName);
+            //chat.Connect(userSender.UserName);
 
         }
 
         public ActionResult Chat()
+        {
+            return View();
+        }
+        public ActionResult ChatNew()
         {
             return View();
         }

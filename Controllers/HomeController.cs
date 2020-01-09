@@ -14,7 +14,7 @@ namespace Site_Lab12.Controllers
     {
         public static ApplicationDbContext dbContext = new ApplicationDbContext();
         ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(dbContext));
-        PostContext postContext = new PostContext();
+        public PostContext postContext = new PostContext();
         public ActionResult Index()
         {
             return View();
