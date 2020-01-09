@@ -3,34 +3,33 @@
 @{
     ViewBag.Title = "HomePage";
 }
+@{
+    Layout = "~/Views/Try/new_layout.cshtml";
+}
 
-<h2>Моя сторінка</h2>
-
-<div>
-    <h4>@Model.UserName</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <p>Моя пошта: @Model.Email</p>
-        <p>Мій нікнейм: @Model.UserName</p>
-        <p>Мій номер телефону: @Model.PhoneNumber</p>
-        @foreach (var s in Model.Roles)
-        {
-            <p>
-                @if (s.RoleId == "fec52346-e68c-41a2-b878-2a5bf51ad1a9")
-                {
-                <p>Ви адмін.</p>
+    <div class="intro">
+        <h2>Моя сторінка</h2>
+        <div class="hr2"></div>
+        <h2>@Model.UserName</h2>
+        <dl class="dl-horizontal">
+            <p><b>Моя пошта:</b> @Model.Email</p>
+            <p><b>Мій нікнейм:</b> @Model.UserName</p>
+            <p><b>Мій номер телефону:</b> @Model.PhoneNumber</p>
+            @foreach (var s in Model.Roles)
+            {
+                <p>
+                    @if (s.RoleId == "fec52346-e68c-41a2-b878-2a5bf51ad1a9")
+                    {
+                    <p style="color: red">Ви адмін.</p>
                 }
-                else
-                {
-                    <p>Ви користувач.</p>
-                }</p>
-        }
-      
+                    </p>
+                }
+            @Html.ActionLink("Змінити", "Edit2Async", new { id = Model.Id }) |
+            @Html.ActionLink("На головну", "Index")
 
 
-    </dl>
-</div>
+        </dl>
+    </div>
 <p>
-    @Html.ActionLink("Змінити", "Edit2Async", new { id = Model.Id }) |
-    @Html.ActionLink("На головну", "Index")
+   
 </p>

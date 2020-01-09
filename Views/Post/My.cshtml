@@ -3,48 +3,93 @@
 @{
     ViewBag.Title = "My";
 }
-
+@{
+    Layout = "~/Views/Try/new_layout.cshtml";
+}
 <h2>My</h2>
+@{ 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.BodyText)
-        </th>
-
-
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-    @Html.DisplayFor(modelItem => item.Title)
-</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BodyText)
-        </td>
-        
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
 }
 
-</table>
+<!-- Begin Container -->
+<div id="container" class="opacity">
+
+    <!-- Begin Blog -->
+    <div class="blog">
+
+        <!-- Begin Posts -->
+        <div class="content">
+            @foreach (var i in Model)
+            {
+
+                <!-- Begin Post -->
+                <div class="post">
+
+                    <!-- Begin Post Info -->
+                    <div class="post-info">
+                        <!-- Begin Date -->
+                        <div class="post-date"> <span class="day">@i.Date.Day</span> <span class="month">@i.Date.Month</span> <span class="year">@i.Date.Year</span> </div>
+                        <!-- End Date -->
+                        <!-- Begin Title -->
+                        <div class="post-title">
+                            <h1>@Html.ActionLink(i.Title, "Details", new { id = i.Id })</h1>
+                            <div class="post-meta"> <span class="comments"><a href="#"></a></span> <span class="categories"><a href="#"></a> <a href="#"></a></span> </div>
+                        </div>
+                        <!-- End Title -->
+                    </div>
+                    <!-- End Post Info -->
+
+                    <div class="post-text">
+                        <a href="post.html"><img src="style/images/art/post1.jpg" alt="" /></a> <br />
+                        <p>@i.BodyText.Substring(0,1000) ...@Html.ActionLink("Continue reading", "Details", new { id = i.Id }) </p>
+                    </div>
+                    <!-- End Text -->
+                    <span class="tags"><a href="#">Black & White</a>, <a href="#">Color</a>, <a href="#">Portfolio</a></span>
+                </div>}
+        </div>
+    </div>
+           
+            <!-- End Post -->
+            @*<p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.BodyText)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BodyText)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>*@

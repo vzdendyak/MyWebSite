@@ -115,18 +115,14 @@ namespace Site_Lab12.Controllers
         [HttpPost]
         [Authorize]
 
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string text,int postId, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var post = postContext.Posts.Where(m => m.Id == postId).FirstOrDefault();
+            post.BodyText = text;
+            postContext.SaveChanges();
+            dbContext.SaveChanges();
+                return View("HomePage","Home");
+           
         }
 
         // GET: Post/Delete/5

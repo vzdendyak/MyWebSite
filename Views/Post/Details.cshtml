@@ -4,12 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
     <h4>Post</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="post-info">
+        <div class="post-date"> <span class="day">@Model.Date.Day</span> <span class="month">@Model.Date.Month</span></div>
+        <div class="post-title">
+            <h1>@Html.DisplayFor(model => model.Title)</h1>
+        </div>
+    </div>
+    <div class="post-text">
+        <p>@Model.BodyText</p>
+    </div>
+    <div class="hr2"></div>
+    @*<dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.BodyText)
         </dt>
@@ -18,13 +28,7 @@
             @Html.DisplayFor(model => model.BodyText)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -33,7 +37,7 @@
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
-
+    *@
     </dl>
 </div>
 
@@ -49,18 +53,52 @@
 
 </div>
 
-<p>Добавить комментарий</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="comment-form">
+        <h3>Leave a Reply</h3>
+        <div class="form-container">
+            <form class="forms cform" action="#" method="post">
+                <fieldset>
+                    <ol>
 
-@*<p>Назва</p>*@
-@Html.TextBox("Title", "Введіть назву")
-<br />
-@Html.TextArea("BodyText", "Введіть коментар", 2, 20, null)
-@Html.Hidden("postId1", $"{ViewData["postsId"]}")
-@*<textarea name="body" id="body" cols="20" rows="2">
-    </textarea>*@
-<br />
 
-<button id="SendComment" type="submit" value="Відправити">Enter</button>
+                        <li class="form-row text-area-row">
+                            <label>Коментар</label>
+                            <textarea name="message" id="BodyText" class="text-area required"></textarea>
+                        </li>
+                        <li class="form-row hidden-row">
+                            <input type="hidden" name="hidden" id="postId1" value="@ViewData["postsId"]" />
+                        </li>
+                        <li class="button-row">
+                            <input type="submit" id="SendComment" value="Submit" name="submit" class="btn-submit" />
+                        </li>
+                    </ol>
+                    <input type="hidden" name="v_error" id="v-error" value="Required" />
+                    <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+                </fieldset>
+            </form>
+            <div class="response"></div>
+        </div>
+    </div>
+}
+else
+{
+    <h3>Коментувати можуть лише зареєстровані користувачі</h3>
+
+}
+
+
+@*<p>Назва</p>
+    @Html.TextBox("Title", "Введіть назву")
+    <br />
+    @Html.TextArea("BodyText", "Введіть коментар", 2, 20, null)
+    @Html.Hidden("postId1", $"{ViewData["postsId"]}")
+    <textarea name="body" id="body" cols="20" rows="2">
+        </textarea>
+    <br />*@
+
+@*<button id="SendComment" type="submit" value="Відправити">Enter</button>*@
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/MyScripts/PostScript.js"></script>

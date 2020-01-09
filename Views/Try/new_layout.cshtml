@@ -1,0 +1,115 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Zeences Design</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/stylesNew.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/color/red.css" media="all" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/MyStyle/css/prettyPhoto.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/type/museo.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/type/charis.css" media="all" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="style/css/ie7.css" media="all" />
+    <![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="style/css/ie8.css" media="all" />
+    <![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" type="text/css" href="style/css/ie9.css" media="all" />
+    <![endif]-->
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+ 
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.forms').dcSlickForms();
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#showcase").awShowcase(
+                {
+                    content_width: 900,
+                    content_height: 400,
+                    auto: true,
+                    interval: 3000,
+                    continuous: false,
+                    arrows: true,
+                    buttons: true,
+                    btn_numbers: true,
+                    keybord_keys: true,
+                    mousetrace: false, /* Trace x and y coordinates for the mouse */
+                    pauseonover: true,
+                    stoponclick: false,
+                    transition: 'fade', /* hslide/vslide/fade */
+                    transition_delay: 0,
+                    transition_speed: 500,
+                    show_caption: 'onload' /* onload/onhover/show */
+                });
+        });
+
+    </script>
+
+</head>
+<body>
+    <!-- Fullscreen backgrounds -->
+    <!-- End Fullscreen backgrounds -->
+    <!-- Begin Wrapper -->
+
+    <div id="wrapper">
+        <div id="header">
+            <div class="logo opacity">@Html.ActionLink("Speach","Index","Home",null,null)</div>
+            <div class="social">
+
+            </div>
+        </div>
+        <div class="clear"></div>
+        <!-- Begin Menu -->
+        <div id="menu" class="menu opacity">
+            <ul>
+                <li>@Html.ActionLink("Моя сторінка", "HomePage", "Home")</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Дописи", "My", "Post")</li>
+                    <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home")</li>
+
+                }
+                @*<li>
+                        <a href="portfolio.html">Portfolio</a>
+                        <ul>
+                            <li><a href="portfolio.html">Portfolio 5 Columns</a></li>
+                            <li><a href="portfolio-post.html">Portfolio Post</a></li>
+                        </ul>
+                    </li>*@
+                <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+            </ul>
+            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
+            <br style="clear: left" />
+        </div>
+        <!-- End Menu -->
+    </div>
+    <div id="container" class="opacity">
+        @RenderBody()
+    </div>
+
+
+    <footer>
+        <div id="copyright" class="opacity">
+            <p>&copy; @DateTime.Now.Year - Speach. All Right Reserved.</p>
+        </div>
+
+    </footer>
+    @*<script type="text/javascript" src="~/Content/MyStyle/js/scripts.js"></script>*@
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

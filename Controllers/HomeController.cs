@@ -102,7 +102,7 @@ namespace Site_Lab12.Controllers
                 IdentityResult res = await userManager.UpdateAsync(ser);
                 if (res.Succeeded)
                 {
-                    return RedirectToAction("HomePage");
+                    return View("HomePage",ser);
                 }
             }
             return RedirectToAction("Index");

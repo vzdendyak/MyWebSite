@@ -1,25 +1,48 @@
 ﻿@model Site_Lab12.Models.Comment
+    <div id="comments">
+        <ol id="singlecomments" class="commentlist">
+           
+                <li class="clearfix">
+                    <div class="user"></div>
+                    <div class="message">
+                        <div class="info">
+                            <h3><a href="#">@Model.Author</a></h3>
+                            <span class="date">@Model.Date</span>
+                            @if (User.IsInRole("admin"))
+                            {
 
-<div id="comentsPart">
-    <ul id="comments">
-        <li class="media">
-            <div class="author"><b>@Model.Author ....NEW</b></div>
+                                @Html.ActionLink("Видалити", "CommentDelete", null, new { @class = "reply-link" })
+                            }
+                        </div>
+                        <p>@Model.BodyText</p>
+                    </div>
 
-            <div>
-                <b>@Model.Title</b>
-            </div>
-            <div class="media-text text-justify">
-                @Model.BodyText
-            </div>
-            <div class="metadata">
-                <span class="date">@Model.Date</span>
-            </div>
-            <div class="footer-comment">
-                @if (User.IsInRole("admin"))
-                {
-                    @Html.ActionLink("Видалити", "CommentDelete")
-                }
-            </div>
-        </li>
-    </ul>
-</div>
+                    <div class="clear"></div>
+
+                </li>
+
+        </ol>
+    </div>
+            
+        @*<ol id="comments">
+            <li class="media">
+                <div class="author"><b>@Model.Author ....NEW</b></div>
+
+                <div>
+                    <b>@Model.Title</b>
+                </div>
+                <div class="media-text text-justify">
+                    @Model.BodyText
+                </div>
+                <div class="metadata">
+                    <span class="date">@Model.Date</span>
+                </div>
+                <div class="footer-comment">
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Видалити", "CommentDelete")
+                    }
+                </div>
+            </li>
+        </ol>*@
+    </div>
