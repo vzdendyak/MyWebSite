@@ -1,25 +1,31 @@
 ﻿@model IEnumerable<Site_Lab12.Models.Comment>
-    <div id="comentsPart">
-        <ul id="comments">
-            @foreach (var com in Model)
-            {
 
-                <li class="media">
-                            <div class="author">@com.Author</div>
-                            <div class="metadata">
-                                <span class="date">@com.Date</span>
-                            </div>
-                        <div class="media-text text-justify">
-                            @com.BodyText
-                        </div>
-                        <div class="footer-comment">
-                            @if (User.IsInRole("admin"))
-                            {
-                                @Html.ActionLink("Видалити", "CommentDelete")
-                            }
-                        </div>
-                </li>
-            }
-        </ul>
-    </div>
+
+<div id="comentsPart">
+    <ul id="comments">
+        @foreach (var com in Model)
+        {
+
+        <li class="media">
+            <div class="author"><b>@com.Author</b></div>
+            <div>
+                <b>@com.Title</b>
+            </div>
+            <div class="media-text text-justify">
+                @com.BodyText
+            </div>
+
+            <div class="metadata">
+                <span class="date">@com.Date</span>
+            </div>
+            <div class="footer-comment">
+                @if (User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("Видалити", "CommentDelete")
+                }
+            </div>
+        </li>
+        }
+    </ul>
+</div>
 

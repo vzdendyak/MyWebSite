@@ -6,74 +6,66 @@
 
 <h2>Details</h2>
 
-    <div>
-        <h4>Post</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.BodyText)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.BodyText)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Date)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Date)
-            </dd>
-
-        </dl>
-    </div>
-
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+<div>
+    <h4>Post</h4>
     <hr />
-    <div id="com_updt">
-        @if (ViewBag.i == 0)
-        {
-            @Html.Partial("Comments", ViewData["com"])
-        }
-    </div>
-    @using (Ajax.BeginForm("CommentAdd", new AjaxOptions
-    {
-        UpdateTargetId = "com_updt",
-        LoadingElementId = "loading",
-        LoadingElementDuration = 1000
-    }))
-    {
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyText)
+        </dt>
 
-        <p>Добавить комментарий</p>
+        <dd>
+            @Html.DisplayFor(model => model.BodyText)
+        </dd>
 
-        @*<p>Назва</p>*@
-        @Html.TextBox("Title", "Введіть назву")
-        <br />
-        @Html.TextArea("BodyText", "Введіть коментар", 2, 20, null)
-        @Html.Hidden("postId1", $"{ViewData["postsId"]}")
-        @*<textarea name="body" id="body" cols="20" rows="2">
-            </textarea>*@
-        <br />
-       
-        <button id="submit" type="submit" value="Відправити" >Enter</button>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
 
-    }
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
 
-<div id="loading" style="display:none; color:Red; font-weight:bold;">
-    <p>Идет загрузка...</p>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
 </div>
-@Scripts.Render("~/scripts/jquery-3.3.1.min.js")
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<hr />
+@{
+    // Html.RenderAction("showComment", "Post", new { postId=Model.Id });
+}
+<div id="com_updt">
+
+</div>
+
+<p>Добавить комментарий</p>
+
+@*<p>Назва</p>*@
+@Html.TextBox("Title", "Введіть назву")
+<br />
+@Html.TextArea("BodyText", "Введіть коментар", 2, 20, null)
+@Html.Hidden("postId1", $"{ViewData["postsId"]}")
+@*<textarea name="body" id="body" cols="20" rows="2">
+    </textarea>*@
+<br />
+
+<button id="SendComment" type="submit" value="Відправити">Enter</button>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/MyScripts/PostScript.js"></script>
+
+
+<!--Ссылка на библиотеку SignalR -->
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
 @*https://localhost:44385/Post/Details/12*@

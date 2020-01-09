@@ -151,6 +151,13 @@ namespace Site_Lab12.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult showComment(string postId)
+        {
+            int NpostId = int.Parse(postId);
+            var comments = postContext.Comments.Where(m => m.PostId == NpostId).ToList();
+            return PartialView("Comments", comments);
+        }
         public ActionResult CommentAdd(string Title,string BodyText, int postId1)
         {
             ViewBag.i=1;
@@ -159,8 +166,7 @@ namespace Site_Lab12.Controllers
             var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
             string Id = User.Identity.GetUserId();
             //  var posts = postContext.Posts.Where(m => m.AuthorId == Id).ToList();
-            try
-            {
+            
                 var ser = userManager.Users.Where(m => m.Id == Id).FirstOrDefault();
                 Comment comentTemp = new Comment
                 {
@@ -172,14 +178,9 @@ namespace Site_Lab12.Controllers
                     PostId = postId1,
                     post = post
                 };
-                postContext.Comments.Add(comentTemp); postContext.SaveChanges(); return PartialView("Comments", coments);
+                postContext.Comments.Add(comentTemp); postContext.SaveChanges(); return PartialView("NewComment", comentTemp);
 
 
-            }
-            catch (Exception)
-            {
-
-            }
             return HttpNotFound();
             //ViewData["com"] = coments;
         }

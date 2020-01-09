@@ -1,0 +1,25 @@
+﻿@model Site_Lab12.Models.Comment
+
+<div id="comentsPart">
+    <ul id="comments">
+        <li class="media">
+            <div class="author"><b>@Model.Author ....NEW</b></div>
+
+            <div>
+                <b>@Model.Title</b>
+            </div>
+            <div class="media-text text-justify">
+                @Model.BodyText
+            </div>
+            <div class="metadata">
+                <span class="date">@Model.Date</span>
+            </div>
+            <div class="footer-comment">
+                @if (User.IsInRole("admin"))
+                {
+                    @Html.ActionLink("Видалити", "CommentDelete")
+                }
+            </div>
+        </li>
+    </ul>
+</div>
