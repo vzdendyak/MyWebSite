@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Home page";
 }
-
+@model IEnumerable<Site_Lab12.Models.ApplicationUser>
 
 
 
@@ -31,22 +31,18 @@
 <!-- Begin 4 Columns -->
 
 <div class="one-fourth">
-    <img src="style/images/icon1.png" alt="" class="center" /><br />
     <h4 class="center">Створення дописів</h4>
     <p class="center">Ви можете створювати власні дописи у мережі Speach</p>
 </div>
 <div class="one-fourth">
-    <img src="style/images/icon2.png" alt="" class="center" /><br />
     <h4 class="center">Коментування дописів інших користувачів</h4>
     <p class="center">Передбачена можливість коментування дописів інших користувачів Speach</p>
 </div>
 <div class="one-fourth">
-    <img src="style/images/icon3.png" alt="" class="center" /><br />
     <h4 class="center">Онлайн-спілкування</h4>
     <p class="center">Ви можете безперешкодно почати спілкування з любим користувачем Speach</p>
 </div>
 <div class="one-fourth last">
-    <img src="style/images/icon4.png" alt="" class="center" /><br />
     <h4 class="center">Тех-підтримка</h4>
     <p class="center">Ми 24/7 працюємо, для того щоб зробити Speach кращою!</p>
 </div>
@@ -54,27 +50,42 @@
 <!-- Divider -->
 <!-- Begin Latest Works -->
 <!-- End Latest Works -->
-
+<script>
+    $(function () {
+        $.ajax({
+            url: '../Home/LatestPosts',
+            type: 'POST',
+      
+            success: function (data1) {
+                $('#postsAdd').append(data1);
+            },
+            error: function () {
+                alert("Произошел сбой бла бла бла");
+            }
+        });
+    })
+</script>
 <div id="footer">
     <div class="footer-top"></div>
     <!-- Divider -->
     <div class="one-fourth">
         <h3>Останні публікації</h3>
-        <ul class="latest-posts">
-            <li><span class="date"><em class="day">22</em><em class="month">Jun</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+        <ul class="latest-posts" id="postsAdd">
+           
+            @*<li><span class="date"><em class="day">22</em><em class="month">Jun</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
             <li><span class="date"><em class="day">14</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
             <li><span class="date"><em class="day">11</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-            <li><span class="date"><em class="day">08</em><em class="month">Apr</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+            <li><span class="date"><em class="day">08</em><em class="month">Apr</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>*@
         </ul>
     </div>
     <div class="one-fourth">
         <h3>Нові користувачі</h3>
         <ul class="latest-posts">
-            <li>Імя 1</li>
-            <li>Імя 2</li>
-            <li>Імя 1</li>
-            <li>Імя 2</li>
-            <li>Імя 1</li>
+            @foreach (var i in Model)
+            {
+            <li>@Html.ActionLink(i.UserName, "Details", new { Id = i.Id })</li>    
+            }
+          
 
         </ul>
     </div>
@@ -89,34 +100,75 @@
         <h3>Надішліть заяву</h3>
         <!-- Form -->
         <div class="form-container">
-            <form class="forms" action="contact/form-handler.php" method="post">
+
+            <style>
+                .blockcentr {
+                    width: 410px;
+                    position: fixed;
+                    left: 50%;
+                    margin-left: -205px;
+                    background: #2F4F4F	;
+                    padding: 15px;
+                    line-height: 23px;
+                    border-radius: 10px;
+                    border: 1px solid #A5A5A5;
+                    z-index: 999992;
+                    top: 250px;
+                }
+
+                .blockall {
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    top: 0px;
+                    left: 0px;
+                    opacity: 0.8;
+                    filter: alpha(opacity=80);
+                    -moz-opacity: 0.8;
+                    background: #000;
+                    cursor: pointer;
+                    z-index: 999990;
+                }
+            </style>
+
+            <div class="forms">
                 <fieldset>
                     <ol>
                         <li class="form-row text-input-row">
                             <label>Імя*</label>
-                            <input type="text" name="name" value="" class="text-input required" title="" />
+                            <input type="text" name="name" id="name1" value="" class="text-input required" title="" />
                         </li>
                         <li class="form-row text-input-row">
                             <label>Email*</label>
-                            <input type="text" name="email" value="" class="text-input required email" title="" />
+                            <input type="text" name="email" id="email1" value="" class="text-input required email" title="" />
                         </li>
                         <li class="form-row text-area-row">
-                            <textarea name="message" class="text-area required"></textarea>
+                            <textarea name="message" id="message1" class="text-area required"></textarea>
                         </li>
                         <li class="form-row hidden-row">
                             <input type="hidden" name="hidden" value="" />
                         </li>
                         <li class="button-row">
-                            <input type="submit" value="Submit" name="submit" class="btn-submit" />
+                            <input type="submit" value="Submit" id="otrp" name="submit" class="btn-submit" />
                         </li>
                     </ol>
                     <input type="hidden" name="v_error" id="v-error" value="Required" />
                     <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
                 </fieldset>
-            </form>
+            </div>
             <div class="response"></div>
         </div>
         <!-- End Form -->
+
+        <div class="blockcentr" style="display: none">
+            <label class="openokno" style="cursor: pointer;float: right;color: green;"></label>
+            <b>Дякуємо!</b><br /> Ми з вами зконтактуємо у найближчий час! Натисніть у любому місці екрану для виходу.
+        </div>
+        <div class="tytoknoall"></div>
+
+        <script type="text/javascript" src="~/Scripts/MyScripts/HomeScript.js"></script>
+
+
     </div>
     <div class="clear"></div>
 </div>

@@ -115,13 +115,15 @@ namespace Site_Lab12.Controllers
         [HttpPost]
         [Authorize]
 
-        public ActionResult Edit(string text,int postId, FormCollection collection)
+        public ActionResult Edit(string text,string title,int postId, FormCollection collection)
         {
             var post = postContext.Posts.Where(m => m.Id == postId).FirstOrDefault();
             post.BodyText = text;
+            post.Title = title;
+
             postContext.SaveChanges();
             dbContext.SaveChanges();
-                return View("HomePage","Home");
+                return RedirectToAction("Index","Home");
            
         }
 

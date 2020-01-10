@@ -31,12 +31,14 @@ namespace Site_Lab12
                                                        senderUserName=userSender.UserName,
                                                        toSendUserName= userRecipient.UserName,
                                                        UserSenderId=userSender.Id,
-                                                       UserToSendId = userRecipient.Id
+                                                       UserToSendId = userRecipient.Id,
+                                                        Date = DateTime.Now
+                                                     
                                                       };
             messageContext.Messages.Add(newMessage);
             messageContext.SaveChanges();
             dbContext.SaveChanges();
-            Clients.Group($"{currentChat.Id}-group").addMessage(userSender.UserName, message);
+            Clients.Group($"{currentChat.Id}-group").addMessage(userSender.UserName, message,DateTime.Now.ToString());
             //Clients.Client(userSender.ConnectionId).addMessage(userSender.UserName,message);
             //Clients.Client(userRecipient.ConnectionId).addMessage(userSender.UserName, message);
 

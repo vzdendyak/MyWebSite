@@ -9,13 +9,17 @@
 {
 
     <div class="comment-form">
-        <h3>Змінити</h3>
+  
         <div class="form-container">
 
 
 
             <fieldset>
                 <ol>
+                    <li class="form-row text-area-row">
+                        <label>Заголовок</label>
+                        <textarea name="title" id="title" class="text-area required">@Model.Title</textarea>
+                    </li>
                     <li class="form-row text-area-row">
                         <label>Коментар</label>
                         <textarea name="text" id="text" class="text-area required">@Model.BodyText</textarea>

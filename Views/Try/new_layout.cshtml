@@ -9,7 +9,7 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>Zeences Design</title>
+    <title>Speach web</title>
     <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/stylesNew.css" media="all" />
     <link rel="stylesheet" type="text/css" href="~/Content/MyStyle/color/red.css" media="all" />
     <link rel="stylesheet" type="text/css" media="screen" href="~/Content/MyStyle/css/prettyPhoto.css" />
@@ -32,6 +32,7 @@
         jQuery(document).ready(function ($) {
             $('.forms').dcSlickForms();
         });
+        
     </script>
     <script type="text/javascript">
 
@@ -60,14 +61,23 @@
     </script>
 
 </head>
-<body>
+<body >
     <!-- Fullscreen backgrounds -->
+    @*<style>
+        body {background: url("Content/MyStyle/images/art/bg3.jpg"); no-repeat:center;}
+    </style>*@
+    @*<div id="thumbs">
+        <a href="~/Content/MyStyle/images/art/bg3.jpg">3</a>
+        <a href="~/Content/MyStyle/images/art/bg4.jpg">4</a>
+        <a href="~/Content/MyStyle/images/art/bg5.jpg">5</a>
+    </div>*@
+   
     <!-- End Fullscreen backgrounds -->
     <!-- Begin Wrapper -->
 
     <div id="wrapper">
         <div id="header">
-            <div class="logo opacity">@Html.ActionLink("Speach","Index","Home",null,null)</div>
+            <div class="logo opacity">@Html.ActionLink("Speach", "Index", "Home", null, null)</div>
             <div class="social">
 
             </div>

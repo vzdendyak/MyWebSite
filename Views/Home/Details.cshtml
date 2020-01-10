@@ -4,9 +4,35 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Model.UserName</h2>
 
-<div>
+    <div class="intro">
+        <h2>@Model.UserName</h2>
+        <div class="hr2"></div>
+
+        <dl class="dl-horizontal">
+            <p><b>Нікнейм:</b> @Model.UserName</p>
+
+
+            @if (User.IsInRole("admin"))
+            {
+                <p><b>Електронна пошта:</b> @Model.Email</p>
+
+                <p><b>Номер телефону:</b> @Model.PhoneNumber</p>
+                @Html.ActionLink("Змінити", "Edit2Async", new { id = Model.Id })
+
+            }
+            </p>
+
+            @Html.ActionLink("На головну", "Index")
+            <nobr>|</nobr>
+            @Html.ActionLink("Написати повідомлення", "Dialog", "Dialog", new { userId = Model.Id }, null)
+
+
+
+
+        </dl>
+    </div>
+@*<div>
     <hr />
     <dl class="dl-horizontal">
         @if (User.IsInRole("admin"))
@@ -45,7 +71,7 @@
 
 <p>
     @Html.ActionLink("Back to List", "UsersList")
-</p>
+</p>*@
 <h2>Дописи</h2>
 
 @Html.Partial("PartialUserPosts", ViewData["Posts"])

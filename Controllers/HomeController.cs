@@ -17,7 +17,10 @@ namespace Site_Lab12.Controllers
         public PostContext postContext = new PostContext();
         public ActionResult Index()
         {
-            return View();
+            var allUsers = userManager.Users.ToList();
+            ViewBag.posts = postContext.Posts.ToList();
+          
+            return View(allUsers);
         }
 
         [Authorize]
@@ -141,6 +144,13 @@ namespace Site_Lab12.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult LatestPosts()
+        {
+            var allPosts = postContext.Posts.ToList();
+       
+            return PartialView(allPosts);
         }
     }
 }

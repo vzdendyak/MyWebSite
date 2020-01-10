@@ -137,3 +137,5 @@ D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.ITry
 D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.ITryNow09.resources
 D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.MessagesContext.AddedUsernames.resources
 D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.AddedUsernames.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.MessagesContext.AddedDateToMessages.resources
+D:\projects\Site-Lab12\obj\Debug\Site_Lab12.Migrations.ApplicationDbContext.AddedDateToMessages.resources

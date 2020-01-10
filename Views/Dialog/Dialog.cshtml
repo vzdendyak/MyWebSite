@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<Site_Lab12.Models.UserMessage>
 @using Microsoft.AspNet.Identity
 
-@{
-    Layout = null;
-}
+
 
 @{
     ViewBag.Title = "Dialog";
@@ -21,32 +19,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Speach", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Моя сторінка", "HomePage", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Дописи", "My", "Post")</li>
-                        <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home")</li>
-
-                    }
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
+    
     <div class="container body-content">
 
         <h2>Dialog with </h2>
@@ -58,14 +31,14 @@
                 <ul id="chatroom">
                     @foreach (var i in Model)
                     {
-                    <li>
+                    <li class="userMessage">
                         @if (i.UserSenderId == ViewData["senderId"].ToString())
                         {
-                            <p > <b class="SenderName">@i.senderUserName: </b> @i.MessageText <b>...............DATA</b></p>
+                        <p> <b class="SenderName1">@i.senderUserName: </b> &nbsp; @i.MessageText <span id="senderDate">@i.Date</span></p>
                         }
                         else
                         {
-                            <p ><b class="RecipientName">@i.senderUserName: </b>   @i.MessageText <b>...............DATA</b></p>
+                    <p><b class="RecipientName">@i.senderUserName: </b>  &nbsp; @i.MessageText <span id="recipientDate">@i.Date</span> </p>
 
                         }
                     </li>
@@ -76,8 +49,8 @@
 
             <div id="header"></div>
             <div id="inputForm">
-                <input type="text" id="message" />
-                <input type="button" id="sendmessage" value="Отправить" />
+                <textarea type="text" id="message" class="sendMes"> </textarea> <br />
+                <input type="button" id="sendmessage" value="Отправить" class="sendMesBut" />
             </div>
 
             <input id="senderId" type="hidden" value="@ViewData["senderId"]" />

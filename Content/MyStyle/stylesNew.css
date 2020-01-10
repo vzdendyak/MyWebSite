@@ -19,6 +19,88 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     background: transparent
 }
+.sendMesBut {
+    background-color: #ab4d63;
+    color: #fff;
+    -webkit-transition: all 200ms border: none;
+    height: 27px;
+    border-radius: 3px;
+    font-family: 'CharisSILItalic';
+    font-size: 14px;
+    padding: 0 20px 1px 20px;
+    cursor: pointer;
+    margin-left: 80px;
+    -webkit-appearance: push-button;
+    user-select: none;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    list-style: none;
+}
+.sendMes {
+    background-color: #393939;
+    border: 1px solid #393939;
+    width: 380px;
+    height: 80px;
+    resize: none;
+    color: #b5b5b5;
+    font-family: 'PTSansRegular';
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textarea;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    list-style: none;
+}
+.userMessage{
+    color:white;
+}
+#postInfoLink:hover{
+background-color: darkslateblue;
+}
+.SenderName1{
+    color: #f25b44;
+    float:left;
+}
+.RecipientName {
+    color: darkkhaki;
+}
+
+#recipientDate {
+    color: darkkhaki;
+    float: right;
+    padding-right: 25em;
+}
+
+#senderDate {
+    color: #f25b44;
+    float: right;
+    padding-right: 25em;
+}
 
 body {
     line-height: 1
@@ -116,7 +198,8 @@ input[type="submit"]:focus, input[type="button"]:focus {
 /*-----------------------------------------------------------------------------------*/
 
 body {
-    background: #1a1a1a;
+    background: url("images/art/bg3.jpg") repeat  center;
+    background-size:  cover;   
     color: #b5b5b5;
     font-family: 'PTSansRegular';
     font-size: 14px;
@@ -186,7 +269,6 @@ ul {
 }
 
     ul li {
-        background: transparent url(style/images/bullet.png) center left no-repeat;
         padding-left: 15px;
     }
 
@@ -217,7 +299,6 @@ blockquote {
     font-weight: normal;
     line-height: 25px;
     padding-left: 30px;
-    background: transparent url(style/images/quote.png) no-repeat left 7px;
 }
 
 .hr2 {
@@ -268,7 +349,6 @@ img {
 }
 
 a.button {
-    background: #5499c3 url(style/images/button.png) repeat-x;
     border: none;
     height: 15px;
     -webkit-border-radius: 3px;
@@ -358,7 +438,6 @@ pre {
     padding: 0 10px 0px 10px;
     display: block;
     clear: both;
-    background: url(style/images/codebg.jpg) repeat;
     line-height: 20px;
     font-size: 12px;
 }
@@ -668,7 +747,6 @@ ul.flickr {
 }
 
     .quote blockquote {
-        background: #393939 url(style/images/quote.png) no-repeat 15px 15px;
         padding: 15px 15px 15px 40px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
@@ -720,7 +798,6 @@ ul.flickr {
     position: absolute;
     top: 50%;
     margin-top: -9px;
-    background: url('style/images/arrows.png');
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -756,7 +833,6 @@ ul.flickr {
 }
 
 .showcase-plus-anchor {
-    background-image: url('style/images/plus.png');
     background-repeat: no-repeat;
 }
 
@@ -769,7 +845,6 @@ div.showcase-tooltip {
     color: #000;
     text-align: left;
     padding: 5px 8px;
-    background-image: url(style/images/white-opacity-80.png);
 }
 
 .showcase-caption {
@@ -781,7 +856,6 @@ div.showcase-tooltip {
     left: 10px;
     display: none;
     width: auto;
-    background-image: url(style/images/white-opacity-80.png);
 }
 
 .showcase-onepage .showcase-content {
@@ -803,7 +877,6 @@ div.showcase-tooltip {
         height: 12px;
         text-indent: -99999px;
         display: inline-block;
-        background: url('style/images/navs.png');
     }
 
         .showcase-button-wrapper span:hover, .showcase-button-wrapper span.active {
@@ -840,7 +913,6 @@ div.showcase-tooltip {
 }
 
 .showcase-thumbnail-cover {
-    background-image: url(style/images/black-opacity-40.png);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -892,7 +964,6 @@ div.showcase-tooltip {
 }
 
     .showcase-thumbnail-button-backward .showcase-thumbnail-vertical, .showcase-thumbnail-button-forward .showcase-thumbnail-vertical, .showcase-thumbnail-button-forward .showcase-thumbnail-horizontal, .showcase-thumbnail-button-backward .showcase-thumbnail-horizontal {
-        background-image: url(style/images/arrows-small.png);
         background-repeat: no-repeat;
         display: block;
         width: 17px;
@@ -1055,7 +1126,6 @@ div.showcase-tooltip {
 }
 
 #prev, #next {
-    background: transparent url(style/images/car-arrow.png) no-repeat;
     width: 21px;
     height: 21px;
     text-indent: -99999px;
@@ -1198,7 +1268,7 @@ div.showcase-tooltip {
     }
 
     .forms fieldset .btn-submit {
-        background: #5499c3 url(style/images/button.png) repeat-x;
+
         border: none;
         height: 27px;
         -webkit-border-radius: 3px;
@@ -1271,7 +1341,7 @@ div.showcase-tooltip {
 }
 
 #footer .forms fieldset .btn-submit {
-    background: #5499c3 url(style/images/button.png) repeat-x;
+    
     border: none;
     height: 27px;
     -webkit-border-radius: 3px;
@@ -1444,15 +1514,12 @@ div.showcase-tooltip {
 
 .play, .zoom, .details {
     position: absolute;
-    background: transparent url(style/images/icon-play.png) no-repeat center center;
 }
 
 .zoom {
-    background-image: url(style/images/icon-zoom.png);
 }
 
 .details {
-    background-image: url(style/images/icon-more.png);
 }
 
 .box a span, .carousel ul li a span {
@@ -1574,19 +1641,16 @@ div.showcase-tooltip {
 }
 
 .comments {
-    background: transparent url(style/images/icon-comment.png) no-repeat left center;
     padding-left: 26px;
     margin-right: 10px;
     padding-right: 10px;
 }
 
 .categories {
-    background: transparent url(style/images/icon-category.png) no-repeat left center;
     padding-left: 22px;
 }
 
 .tags {
-    background: transparent url(style/images/icon-tag.png) no-repeat left center;
     padding-left: 30px;
     margin-top: 10px;
     padding-top: 5px;
@@ -1673,7 +1737,6 @@ a.more {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    background: #393939 url(style/images/search.png) 240px center no-repeat;
 }
 
 .tag-list ul li {
@@ -1767,7 +1830,6 @@ ul.ads {
 /*-----------------------------------------------------------------------------------*/
 
 .service {
-    background: transparent url(style/images/circle.png) no-repeat;
     width: 100px;
     height: 100px;
     display: block;
@@ -2020,13 +2082,11 @@ table {
             }
 
 .check-icon {
-    background: transparent url(style/images/check-table.png) no-repeat center left;
     width: 12px;
     height: 10px;
 }
 
 .cross {
-    background: transparent url(style/images/cross.png) no-repeat center left;
     width: 10px;
     height: 10px;
 }
@@ -2048,7 +2108,6 @@ table span.cross {
     width: 100%;
     height: 100%;
     z-index: 2;
-    background: url('style/images/tile.png');
 }
 /*-----------------------------------------------------------------------------------*/
 /* COMMENTS

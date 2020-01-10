@@ -42,6 +42,7 @@ namespace Site_Lab12.Models
 
         [ForeignKey("ChatId")]
         public Chat chat { get; set; }
+        public DateTime Date { get; set; }
         public string senderUserName { get; set; }
         public string toSendUserName { get; set; }
 
