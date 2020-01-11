@@ -77,15 +77,32 @@ namespace Site_Lab12.Controllers
         {
             if (Id!=null)
             {
-                var ser = await userManager.FindByIdAsync(Id);
-                if (ser != null)
+                if (Id==User.Identity.GetUserId())
                 {
-                    return View(ser);
-                }
-                else
-                {
+                    var ser = await userManager.FindByIdAsync(Id);
+                    if (ser != null)
+                    {
+                        return View(ser);
+                    }
+                    else
+                    {
 
-                    return RedirectToAction("HomePage");
+                        return RedirectToAction("HomePage");
+                    }
+
+                }
+                else if(User.IsInRole("admin"))
+                {
+                   var ser = await userManager.FindByIdAsync(Id);
+                    if (ser != null)
+                    {
+                        return View(ser);
+                    }
+                    else
+                    {
+
+                        return RedirectToAction("HomePage");
+                    }
                 }
 
             }

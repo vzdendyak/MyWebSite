@@ -1,5 +1,5 @@
 ﻿$(function () {
-   
+  
 
     $(document).ready(function () {
 
@@ -17,7 +17,7 @@
                 alert("Произошел сбой бла бла бла");
             }
         });
-
+      
         $('#SendComment').click(function (e) {
             e.preventDefault();
             var comText = $('#BodyText').val();
@@ -35,6 +35,8 @@
                 }
             })
 
-        });
+        }); 
+        
     })
-})
+    
+    })

@@ -13,15 +13,15 @@
                     <span class="date">@com.Date</span>
                     @if (User.IsInRole("admin"))
                     {
-                       
-                        @Html.ActionLink("Видалити", "CommentDelete",null, new { @class = "reply-link"})
+                        @Html.ActionLink("Видалити", "CommentDelete", new { Id = com.Id }, new { @class = "reply-link", @id = "deleteBut" })
                     }
                 </div>
-                <p>@com.BodyText</p>
+                <p id="usText">@com.BodyText</p>
             </div>
+         
 
             <div class="clear"></div>
-           
+
         </li>
             
         }

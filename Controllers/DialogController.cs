@@ -26,6 +26,7 @@ namespace Site_Lab12.Controllers
         public ActionResult Dialog(string userId)
         {
             string currentUserId = User.Identity.GetUserId();
+            var ser = userManager.Users.Where(m => m.Id == userId).FirstOrDefault();
             if (userId != null)
             {
                 var currentChat = messageContext.Chats.Where(m => (m.UserFirstId == userId && m.UserSecondId == currentUserId) || (m.UserFirstId == currentUserId && m.UserSecondId == userId)).FirstOrDefault();
@@ -41,8 +42,9 @@ namespace Site_Lab12.Controllers
                 var messages = messageContext.Messages.Where(m => (m.UserSenderId == currentUserId && m.UserToSendId == userId)||(m.UserToSendId == currentUserId && m.UserSenderId == userId)).ToList();
                 ViewData["senderId"] = currentUserId;
                 ViewData["recipientId"] = userId;
+                ViewData["recipientName"] = ser.UserName;
 
-                    return View(messages);
+                return View(messages);
                 }
                
                 

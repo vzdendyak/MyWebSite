@@ -19,11 +19,13 @@
             {
                 <p>
                     @if (s.RoleId == "fec52346-e68c-41a2-b878-2a5bf51ad1a9")
-                    {
+                    { 
+
                     <p style="color: red">Ви адмін.</p>
                 }
                     </p>
                 }
+            
             @Html.ActionLink("Змінити", "Edit2Async", new { id = Model.Id }) |
             @Html.ActionLink("На головну", "Index")
 

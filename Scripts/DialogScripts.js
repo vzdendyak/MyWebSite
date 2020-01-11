@@ -1,6 +1,7 @@
 ﻿$(function () {
+
     var chat = $.connection.chatHub;
-   
+    var sobes = $('#username').val();
     chat.client.addMessage = function (name, message,date) {
         // Добавление сообщений на веб-страницу 
         $('#chatroom').append('<li class="userMessage"><p> <b class="SenderName1">' + htmlEncode(name)

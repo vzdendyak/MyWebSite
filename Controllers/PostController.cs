@@ -10,6 +10,8 @@ using System.Web.Mvc;
 
 namespace Site_Lab12.Controllers
 {
+    [Authorize]
+
     public class PostController : Controller
     {
 
@@ -104,11 +106,24 @@ namespace Site_Lab12.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+          
             var post = postContext.Posts.Where(m => m.Id == id).FirstOrDefault();
-            var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
-            ViewData["com"] = coments;
-            ViewBag.coments = coments;
-            return View(post);
+            if (post.AuthorId==User.Identity.GetUserId())
+            {
+                var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
+                ViewData["com"] = coments;
+                ViewBag.coments = coments;
+                return View(post);
+            }
+            else if (User.IsInRole("admin"))
+            {
+                var coments = postContext.Comments.Where(m => m.PostId == post.Id).ToList();
+                ViewData["com"] = coments;
+                ViewBag.coments = coments;
+                return View(post);
+            }
+            return RedirectToAction("My");
+           
         }
 
         // POST: Post/Edit/5
@@ -169,7 +184,7 @@ namespace Site_Lab12.Controllers
                 Comment comentTemp = new Comment
                 {
                     BodyText = BodyText,
-                    Title = Title,
+                    Title = "",
                     Author = ser.UserName,
                     AuthorId = ser.Id,
                     Date = DateTime.Now,
@@ -182,9 +197,15 @@ namespace Site_Lab12.Controllers
             return HttpNotFound();
             //ViewData["com"] = coments;
         }
-        public ActionResult CommentDelete()
+        public ActionResult CommentDelete(int Id)
         {
-            return RedirectToAction("My");
+            var coment = postContext.Comments.Where(m => m.Id == Id).FirstOrDefault();
+            var postId = coment.PostId;
+            postContext.Comments.Remove(coment);
+            postContext.SaveChanges();
+            //  return RedirectToAction 
+
+            return RedirectToAction("Details",new { id=postId});
         }
     }
 }

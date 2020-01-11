@@ -86,21 +86,23 @@
         <!-- Begin Menu -->
         <div id="menu" class="menu opacity">
             <ul>
-                <li>@Html.ActionLink("Моя сторінка", "HomePage", "Home")</li>
+                <li>@Html.ActionLink("Моя сторінка", "HomePage", "Home", null, new { @class = "last1" })</li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>@Html.ActionLink("Дописи", "My", "Post")</li>
-                    <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home")</li>
+                    <li>@Html.ActionLink("Пошук користувачів", "UsersList", "Home", null, new { @id = "last2" })</li>
+                    <li><a style="padding-right:149px;"></a></li>
+
 
                 }
                 @*<li>
-                        <a href="portfolio.html">Portfolio</a>
-                        <ul>
-                            <li><a href="portfolio.html">Portfolio 5 Columns</a></li>
-                            <li><a href="portfolio-post.html">Portfolio Post</a></li>
-                        </ul>
-                    </li>*@
-                <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
+            <a href="portfolio.html">Portfolio</a>
+            <ul>
+                <li><a href="portfolio.html">Portfolio 5 Columns</a></li>
+                <li><a href="portfolio-post.html">Portfolio Post</a></li>
+            </ul>
+        </li>*@
+                <li>@*@Html.ActionLink("Связаться", "Contact", "Home",null, new {@class="last1" } )</li>*@
             </ul>
             @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
             <br style="clear: left" />

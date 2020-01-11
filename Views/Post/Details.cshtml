@@ -1,4 +1,5 @@
 ﻿@model Site_Lab12.Models.Post
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Details";
@@ -43,7 +44,7 @@
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "My")
 </p>
 <hr />
 @{
@@ -74,8 +75,8 @@
                             <input type="submit" id="SendComment" value="Submit" name="submit" class="btn-submit" />
                         </li>
                     </ol>
-                    <input type="hidden" name="v_error" id="v-error" value="Required" />
-                    <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+                    <input type="hidden" name="v_error" id="userId" value="@User.Identity.GetUserId()" />
+                    <input type="hidden" name="v_email" id="authorId" value="@Model.AuthorId" />
                 </fieldset>
             </form>
             <div class="response"></div>
